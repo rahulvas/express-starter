@@ -15,7 +15,11 @@ app.engine('html', ejs.renderFile);
 
 
 ///////////////////////////////////////////////////////////////////////////////
-// APP ROUTES                                                                //
+// APP ROUTES       
+app.get('/calc', function(req, res) {
+  res.render('calc.html', { });
+});
+                                                         //
 ///////////////////////////////////////////////////////////////////////////////
 //default route
 app.get('/', function(req, res) {
