@@ -26,20 +26,69 @@ $(function() {
       outputText = '2';
     }
     // FIXME
-    $('#output').text('haha');
+    $('#output').text(outputText);
   });
 
   $('#three').click(function() {
     var outputText = $('#output').text() + '3';
     // FIXME
+    if (outputText == '03') {
+      outputText ='3';
+    }
     $('#output').text(outputText);
   });
 
   $('#four').click(function() {
     // FIXME
+    var outputText = $('#output').text() + '4';
+    if (outputText == '04') {
+      outputText = '4'; 
+    }
+    $('#output').text(outputText);
   });
 
   // WRITE CODE HERE for buttons 5-9
+
+  $('#five').click(function() {
+    var outputText = $('#output').text() + '5';
+    if (outputText == '05') {
+      outputText = '5' ;
+    }
+    $('#output').text(outputText);
+  });
+
+  $('#six').click(function() {
+    var outputText = $('#output').text() + '6';
+    if (outputText == '06') {
+      outputText = '6' ;
+    }
+    $('#output').text(outputText);
+  });
+
+  $('#seven').click(function() {
+    var outputText = $('#output').text() + '7';
+    if (outputText == '07') {
+      outputText = '7' ;
+    }
+    $('#output').text(outputText);
+  });
+
+  $('#eight').click(function() {
+    var outputText = $('#output').text() + '8';
+    if (outputText == '08') {
+      outputText = '8' ;
+    }
+    $('#output').text(outputText);
+  });
+
+  $('#nine').click(function() {
+    var outputText = $('#output').text() + '9';
+    if (outputText == '09') {
+      outputText = '9' ;
+    }
+    $('#output').text(outputText);
+  });
+
 
   $('#add').click(function() {
     if (notLastOp()) {
@@ -49,6 +98,34 @@ $(function() {
   });
 
   // WRITE CODE HERE for sub,mul,div,mod
+
+  $('#sub').click(function() {
+    if (notLastOp()) {
+      var outputText = $('#output').text() + '-';
+      $('#output').text(outputText);
+    }
+  });
+
+  $('#mul').click(function() {
+    if (notLastOp()) {
+      var outputText = $('#output').text() + '*';
+      $('#output').text(outputText);
+    }
+  });
+
+  $('#div').click(function() {
+    if (notLastOp()) {
+      var outputText = $('#output').text() + '/';
+      $('#output').text(outputText);
+    }
+  });
+
+  $('#mod').click(function() {
+    if (notLastOp()) {
+      var outputText = $('#output').text() + '%';
+      $('#output').text(outputText);
+    }
+  });
 
   $('#sqrt').click(function() {
     var outputText = $('#output').text();
@@ -61,13 +138,14 @@ $(function() {
     var outputText = $('#output').text();
     var outputNum = parseFloat(eval(outputText));
     // FIXME
-    var newNum = Math.sqrt(outputNum);
+    var newNum = outputNum * outputNum;
     $('#output').text(newNum);
   });
 
   $('#equals').click(function() {
     // FIXME
-    var res = eval('4*10+7');
+    var outputText = $('#output').text();
+    var res = parseFloat(eval(outputText));
     $('#output').text(res);
   });
 
