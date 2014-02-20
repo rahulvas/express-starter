@@ -71,15 +71,18 @@ table button:active {
 
 @-webkit-keyframes dance {
   0%,50%,100% {
-    -webkit-transform: translateY(-50px) rotate(-360deg);
+    -webkit-transform: translateY(-50px) rotate(-360deg) scale(1.0);
+    background-color: red;
     opacity: 0.5;
   }
   25% {
-    -webkit-transform: translateY(-30px) rotate(120deg);
+    -webkit-transform: translateY(-30px) rotate(-20deg) scale(2.0);
+    background-color: blue;
     opacity: 0.5;
   }
   75% {
-    -webkit-transform: translateY(-30px) rotate(20deg);
+    -webkit-transform: translateY(-30px) rotate(360deg) scale(1.5);
+    background-color: green;
     opacity: 0.5;
   }
 }
