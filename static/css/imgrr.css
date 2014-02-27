@@ -1,3 +1,11 @@
 .clickable:hover {
   /* WRITE CODE HERE */
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.imgrr_click:hover {
+  /* WRITE CODE HERE */
+  opacity: 0.7;
+  cursor: pointer;
 }
