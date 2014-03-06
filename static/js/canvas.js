@@ -62,4 +62,33 @@ $(document).ready(function() {
   	context.fillRect(250, 250, 25, 25);
   });
 
+  $('#p9').click(function(){
+  	for(var i = 0; i<=250; i+= 50){
+  		context.strokeRect(i ,0, 50, 50);
+  	}
+  });
+
+  $('#p10').click(function(){
+  	for(var i = 0; i<=500; i+= 5){
+  		context.strokeRect(i ,0, 5, 5);
+  	}
+  });
+
+  $('#p11').click(function(){
+  	for(var i = 0; i<=500; i+=5){
+  		for(var j = 0; j<=500; j+=5){
+  			context.strokeRect(i,j, 5, 5);
+  		}
+  	}
+  });
+
+  $('#p12').click(function(){
+  	for(var i = 0; i <200; i+= 10){
+  		context.beginPath();
+  		context.arc(250,250, i, 0, 2*Math.PI);
+  		context.closePath();
+  		context.stroke();
+  	}
+  });
+
 });
