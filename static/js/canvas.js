@@ -41,4 +41,25 @@ $(document).ready(function() {
   	context.stroke();
   })
 
+  $('#p6').click(function() {
+  	context.strokeStyle='green';
+  	context.strokeRect(200,80, 10 ,50);
+  });
+
+  $('#p7').click(function() {
+  	context.beginPath();
+  	context.fill();
+  	context.fillStyle='red';
+  	context.arc(200, 65, 15, 0, 2*Math.PI);
+  	context.closePath();
+  	context.fill();
+  });
+
+  $('#p8').click(function() {
+  	context.strokeStyle = 'blue';
+  	context.fillStyle='yellow';
+  	context.strokeRect(250,250,25,25);
+  	context.fillRect(250, 250, 25, 25);
+  });
+
 });
