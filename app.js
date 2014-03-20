@@ -40,6 +40,10 @@ app.get('/funcs', function(req, res) {
   res.render('funcs.html', { });
 });
 
+app.get('/ball', function(req, res) {
+  res.render('ball.html', { });
+});
+
                                                         //
 ///////////////////////////////////////////////////////////////////////////////
 //default route

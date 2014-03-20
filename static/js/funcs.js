@@ -52,9 +52,9 @@ $(document).ready(function() {
   };
 
   var drawTripleTriforce = function(x,y,sideLen, color) {
-    drawTriforce(x,y,sideLen, color);
-    drawTriforce(x - x/2 ,y+ sideLen*Math.sin(Math.PI/3),sideLen, color);
-    drawTriforce(x + x/2 ,y+ sideLen*Math.sin(Math.PI/3),sideLen, color);
+    //  drawTriforce(x,y,sideLen, color);
+    drawTriforce(x ,y,sideLen, color);
+    drawTriforce(x,y+ 2*sideLen*Math.sin(Math.PI/3),sideLen, color);
   };
 
   // Challenge:
@@ -113,7 +113,7 @@ $(document).ready(function() {
   });
 
   $('#p11').click(function() {
-    drawTripleTriforce(100, 100, 105, 'blue');
+    drawTripleTriforce(140, 100, 105, 'blue');
   });
 
 });
