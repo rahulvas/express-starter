@@ -16,6 +16,7 @@ $(document).ready(function() {
   var updateGame = function() {
     
     circle.x += 5;
+    circle.y += 5;
 
     context.strokeRect(0, 0, canvas.width, canvas.height);
     context.clearRect(0, 0, canvas.width, canvas.height);
