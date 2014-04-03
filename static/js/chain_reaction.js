@@ -13,8 +13,8 @@ $(document).ready(function() {
     newBall.x = canvas.width*Math.random();
     newBall.y = canvas.height*Math.random();
     newBall.r = 20;
-    newBall.vx = 30*Math.random();
-    newBall.vy = 30*Math.random();
+    newBall.vx = 5*Math.random();
+    newBall.vy = 5*Math.random();
     balls.push(newBall);
   };
 
@@ -59,6 +59,13 @@ $(document).ready(function() {
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
+    var clickBall = {};
+    clickBall.x = x;
+    clickBall.y = y;
+    clickBall.r = 20;
+    clickBall.vx = 5*Math.random();
+    clickBall.vy = 5*Math.random();
+    balls.push(clickBall);
   });
 
 
