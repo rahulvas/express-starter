@@ -6,28 +6,17 @@ $(document).ready(function() {
   var height = canvas.height;
 
   // PUT STUFF HERE
+  var numBalls = 10;
   var balls = [];
-  var b0 = {};
-    b0.x = 40;
-    b0.y = 40;
-    b0.r = 20;
-    b0.vx = 10;
-    b0.vy = 10;
-  var b1 = {};
-    b1.x = 200;
-    b1.y = 200;
-    b1.r = 20;
-    b1.vx = -5;
-    b1.vy = -5;
-  var b2 = {};
-    b2.x = 100;
-    b2.y = 100;
-    b2.r = 20;
-    b2.vx = -8;
-    b2.vy = -8;
-  balls.push(b0);
-  balls.push(b1);
-  balls.push(b2);
+  for(var i = 0; i< numBalls; i++){
+    var newBall = {};
+    newBall.x = canvas.width*Math.random();
+    newBall.y = canvas.height*Math.random();
+    newBall.r = 20;
+    newBall.vx = 10;
+    newBall.vy = 10;
+    balls.push(newBall);
+  };
 
   // Run an interation of the game
   var updateGame = function() {
@@ -60,7 +49,7 @@ $(document).ready(function() {
     context.stroke();
   };
 
-  setTimeout(updateGame, 10)
+  requestAnimationFrame(updateGame)
 
   };
 
