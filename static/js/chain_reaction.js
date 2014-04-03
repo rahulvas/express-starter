@@ -13,8 +13,8 @@ $(document).ready(function() {
     newBall.x = canvas.width*Math.random();
     newBall.y = canvas.height*Math.random();
     newBall.r = 20;
-    newBall.vx = 10;
-    newBall.vy = 10;
+    newBall.vx = 30*Math.random();
+    newBall.vy = 30*Math.random();
     balls.push(newBall);
   };
 
