@@ -64,12 +64,15 @@ $(document).ready(function() {
   }
 
   for (var i = 0; i < balls.length; i++) {
+      var collided = false;
         for (var j = 0; j < reactions.length; j++) {
                 var xdiff = Math.abs(reactions[j].x - balls[i].x);
                 var ydiff = Math.abs(reactions[j].y - balls[i].y);
                 var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff);
                 if (dist < reactions[j].r + balls[i].r){
-                alert('Boom');
+                collided = true;
+                balls.splice(i,1);
+                i--;
         }
       }
 }
