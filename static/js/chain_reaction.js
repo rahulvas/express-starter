@@ -71,6 +71,8 @@ $(document).ready(function() {
                 var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff);
                 if (dist < reactions[j].r + balls[i].r){
                 collided = true;
+                console.log(balls[i]);
+                reactions.push(createBall(balls[i].x,balls[i].y,balls[i].r));
                 balls.splice(i,1);
                 i--;
         }
