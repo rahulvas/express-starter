@@ -63,6 +63,17 @@ $(document).ready(function() {
     }
   }
 
+  for (var i = 0; i < balls.length; i++) {
+        for (var j = 0; j < reactions.length; j++) {
+                var xdiff = Math.abs(reactions[j].x - balls[i].x);
+                var ydiff = Math.abs(reactions[j].y - balls[i].y);
+                var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff);
+                if (dist < reactions[j].r + balls[i].r){
+                alert('Boom');
+        }
+      }
+}
+
 
   for(var i = 0; i< balls.length; i++){
     context.beginPath();
