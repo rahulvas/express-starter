@@ -57,6 +57,11 @@ $(document).ready(function() {
     balls[i].y += balls[i].vy;
 }
 
+  for(var i = 0; i<reactions.length; i++){
+    if(reactions[i].r < 30) {
+      reactions[i].r += 1;
+    }
+  }
 
 
   for(var i = 0; i< balls.length; i++){
@@ -86,7 +91,7 @@ $(document).ready(function() {
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
 
-  var newBall = createBall(x,y,30);
+  var newBall = createBall(x,y,1);
   reactions.push(newBall);
   });
 
