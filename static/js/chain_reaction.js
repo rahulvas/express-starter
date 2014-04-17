@@ -12,6 +12,24 @@ $(document).ready(function() {
   var menuText = 'Click to play!';
 
 //
+
+//
+  var levels = [
+  {num: 1, minReactions: 1, numBalls: 5},
+  {num: 2, minReactions: 2, numBalls: 6},
+  {num: 3, minReactions: 3, numBalls: 11},
+  {num: 4, minReactions: 5, numBalls: 17},
+  {num: 5, minReactions: 8, numBalls: 28},
+  {num: 6, minReactions: 13, numBalls: 45},
+  {num: 7, minReactions: 21, numBalls: 73},
+  {num: 8, minReactions: 34, numBalls: 118},
+  {num: 9, minReactions: 55, numBalls: 191}
+  ];
+
+  var curLevel = 0;
+
+  var levelText = 'Level 1 - React 1 out of 5 balls!';
+//
   var reacting = false;
   var numReacted = 0;
   var reactions = [];
@@ -91,9 +109,9 @@ $(document).ready(function() {
     }
   }
 
-  for (var i = 0; i < balls.length; i++) {
+for (var j = 0; j < reactions.length; j++) {
       var collided = false;
-        for (var j = 0; j < reactions.length; j++) {
+        for (var i = 0; i < balls.length; i++) {
                 var xdiff = Math.abs(reactions[j].x - balls[i].x);
                 var ydiff = Math.abs(reactions[j].y - balls[i].y);
                 var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff);
@@ -111,28 +129,44 @@ $(document).ready(function() {
   for(var i = 0; i< balls.length; i++){
     context.beginPath();
     context.arc(balls[i].x, balls[i].y, balls[i].r, 0, 2*Math.PI);
-    context.strokeStyle= balls[i].color;
+    context.fillStyle= balls[i].color;
     context.closePath();
-    context.stroke();
+    context.fill();
   };
 
   for(var i = 0; i < reactions.length; i++){
     context.beginPath();
     context.arc(reactions[i].x, reactions[i].y, reactions[i].r, 0, 2*Math.PI);
-    context.strokeStyle= 'grey';
+    context.fillStyle= 'grey';
     context.closePath();
-    context.stroke();
+    context.fill();
   }
 
   context.fillStyle = 'black';
-  context.font = '20px Comic Sans';
-  context.fillText("Reactions: " + numReacted, canvas.width/2.5, canvas.height);
-}
-if (reacting === true && reactions.length === 0){
-  menuText = "Game over! You reacted with " + numReacted + " balls!";
-  gameState = 'menu';
-}
+  context.font = '20px Arial';
+  context.fillText("Reactions: " + numReacted, canvas.width/2.5, canvas.height/1.05);
+  context.fillText(levelText, canvas.width/2.5, canvas.height);
 
+if (reacting === true && reactions.length === 0){
+    menuText = "Game over! You reacted with " + numReacted + " balls!";
+    gameState = 'menu';
+
+  if (numReacted >= levels[curLevel].minReactions){
+    if (curLevel === levels.length-1){
+      curLevel = 0;
+      menuText = 'You Won! Click to Start Over!'
+    }
+    else {
+      curLevel += 1;
+       menuText = 'Wow, you beat a level. Awesome. Click to go the next level.';
+  }
+  }
+  else {
+    menuText = 'Sorry try again';
+  }
+
+}
+}
   requestAnimationFrame(updateGame)
 
   };
@@ -141,10 +175,11 @@ if (reacting === true && reactions.length === 0){
   $('#game_canvas').click(function(e) {
     if (gameState === 'menu'){
       gameState = 'playing';
+      levelText = 'Level' + levels[curLevel].num + ' - React ' + levels[curLevel].minReactions + ' out of ' + levels[curLevel].numBalls + ' balls';
       reacting = false;
       numReacted = 0;
       balls = [];
-    for(var i = 0; i< numBalls; i++){
+    for(var i = 0; i< levels[curLevel].numBalls; i++){
         var newBall = createBall(-1,-1,-1);
         balls.push(newBall);
   };
