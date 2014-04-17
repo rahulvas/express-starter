@@ -6,6 +6,8 @@ $(document).ready(function() {
   var height = canvas.height;
 
   // PUT STUFF HERE
+  var reacting = false;
+  var numReacted = 0;
   var reactions = [];
 
   var Colors = ['blue', 'red', 'yellow', 'green', 'purple', 'magenta', 'black', 'blue', 'red'];
@@ -81,6 +83,7 @@ $(document).ready(function() {
                 var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff);
                 if (dist < reactions[j].r + balls[i].r){
                 collided = true;
+                numReacted += 1;
                 reactions.push(createBall(balls[i].x,balls[i].y,balls[i].r,0));
                 balls.splice(i,1);
                 i--;
@@ -107,16 +110,24 @@ $(document).ready(function() {
 
   requestAnimationFrame(updateGame)
 
+  context.fillStyle = 'black';
+  context.font = '20px Comic Sans';
+  context.fillText("Reactions: " + numReacted, canvas.width/2.5, canvas.height);
+
+
   };
 
   // Handle a canvas click event
   $('#game_canvas').click(function(e) {
     // Find the mouse x and y relative to the top-left corner of the canvas
+    if (reacting === false){
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
+    reacting = true;
     // PUT STUFF HERE
   var newBall = createBall(x,y,1, 0);
   reactions.push(newBall);
+}
   });
 
 
