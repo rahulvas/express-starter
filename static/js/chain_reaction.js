@@ -13,16 +13,18 @@ $(document).ready(function() {
   var numBalls = 10;
   var balls = [];
 
-  var createBall = function(x,y,r){
+  var createBall = function(x,y,r,t){
     var newBall = {};
     if(x > 0 && y > 0 && r > 0){
       newBall.x = x;
       newBall.y = y;
       newBall.r = r;
+      newBall.t = t;
     }
     else{ newBall.x = canvas.width*Math.random();
     newBall.y = canvas.height*Math.random();
     newBall.r = 20;
+    newBall.t = 0;
   }
     newBall.vx = 5*Math.random();
     newBall.vy = 5*Math.random();
@@ -58,8 +60,16 @@ $(document).ready(function() {
 }
 
   for(var i = 0; i<reactions.length; i++){
-    if(reactions[i].r < 30) {
+    reactions[i].t += 1;
+    if (reactions[i].t > 200){
+      reactions[i].r -= 1;
+    }
+    else if(reactions[i].r < 30) {
       reactions[i].r += 1;
+    }
+    if (reactions[i].r === 0){
+      reactions.splice(i,1);
+      i--;
     }
   }
 
@@ -71,8 +81,7 @@ $(document).ready(function() {
                 var dist = Math.sqrt(xdiff * xdiff + ydiff * ydiff);
                 if (dist < reactions[j].r + balls[i].r){
                 collided = true;
-                console.log(balls[i]);
-                reactions.push(createBall(balls[i].x,balls[i].y,balls[i].r));
+                reactions.push(createBall(balls[i].x,balls[i].y,balls[i].r,0));
                 balls.splice(i,1);
                 i--;
         }
@@ -106,8 +115,7 @@ $(document).ready(function() {
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
     // PUT STUFF HERE
-
-  var newBall = createBall(x,y,1);
+  var newBall = createBall(x,y,1, 0);
   reactions.push(newBall);
   });
 
