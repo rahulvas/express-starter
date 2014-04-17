@@ -6,6 +6,12 @@ $(document).ready(function() {
   var height = canvas.height;
 
   // PUT STUFF HERE
+  
+//MENU STUFF
+  var gameState = 'menu';
+  var menuText = 'Click to play!';
+
+//
   var reacting = false;
   var numReacted = 0;
   var reactions = [];
@@ -42,9 +48,19 @@ $(document).ready(function() {
   // Run an interation of the game
   var updateGame = function() {
     // PUT STUFF HERE
-
     context.fillStyle = 'white';
     context.fillRect(0, 0, canvas.width, canvas.height);
+   
+    //CHECK GAME STATE
+    if (gameState === 'menu'){
+        context.fillStyle = 'black';
+        context.font = '20px Arial';
+        context.fillText(menuText, canvas.width/3, canvas.height/2.5);
+    }
+    //
+
+
+  else if (gameState === 'playing'){
 
   for(var i = 0; i < balls.length; i++){
     if((balls[i].vx > 0 && balls[i].x + balls[i].r >= canvas.width) || (balls[i].vx <
@@ -108,19 +124,33 @@ $(document).ready(function() {
     context.stroke();
   }
 
-  requestAnimationFrame(updateGame)
-
   context.fillStyle = 'black';
   context.font = '20px Comic Sans';
   context.fillText("Reactions: " + numReacted, canvas.width/2.5, canvas.height);
+}
+if (reacting === true && reactions.length === 0){
+  menuText = "Game over! You reacted with " + numReacted + " balls!";
+  gameState = 'menu';
+}
 
+  requestAnimationFrame(updateGame)
 
   };
 
   // Handle a canvas click event
   $('#game_canvas').click(function(e) {
+    if (gameState === 'menu'){
+      gameState = 'playing';
+      reacting = false;
+      numReacted = 0;
+      balls = [];
+    for(var i = 0; i< numBalls; i++){
+        var newBall = createBall(-1,-1,-1);
+        balls.push(newBall);
+  };
+    }
     // Find the mouse x and y relative to the top-left corner of the canvas
-    if (reacting === false){
+    if (gameState === 'playing' && reacting === false){
     var x = e.pageX - $(this).offset().left;
     var y = e.pageY - $(this).offset().top;
     reacting = true;
