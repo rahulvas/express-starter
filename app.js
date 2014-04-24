@@ -54,13 +54,19 @@ app.get('/chain_reaction', function(req, res) {
 
 app.get('/fact', function(req, res) {
   res.render('fact.html', {
-    fact: facts[Math.floor(Math.random() * 4)]
+    fact: facts[Math.floor(Math.random() * facts.length)]
    });
 });
 
 app.get('/facts', function(req, res) {
   res.render('facts.html', { 
     facts : facts});
+});
+
+app.get('/submit_fact', function(req, res) {
+  var newfact = req.query['fact'];
+  facts.push(newfact);
+  res.redirect('/facts');
 });
 
                                                         //
