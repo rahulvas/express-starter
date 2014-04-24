@@ -3,5 +3,8 @@
     <!-- insert your templating code here
         hint: check out http://embeddedjs.com/ to see examples of templates
         using for loops -->
+        <% for(var i =0; i < facts.length; i++){ %>
+        <p>Fact: <%= facts[i] %>.</p>
+        <% } %>
   </body>
 </html>

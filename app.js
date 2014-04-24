@@ -48,11 +48,19 @@ app.get('/chain_reaction', function(req, res) {
   res.render('chain_reaction.html', { });
 });
 
-app.get('/fact', function(req, res) {
+//////
   var facts = ['Santa Claus is Real', "'A man a plan a canal panama' is a palindrome.", 'Math is hard', 'Aunt Jemima is the fucking bomb!'];
+  /////
+
+app.get('/fact', function(req, res) {
   res.render('fact.html', {
     fact: facts[Math.floor(Math.random() * 4)]
    });
+});
+
+app.get('/facts', function(req, res) {
+  res.render('facts.html', { 
+    facts : facts});
 });
 
                                                         //
