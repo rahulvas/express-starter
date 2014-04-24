@@ -48,6 +48,12 @@ app.get('/chain_reaction', function(req, res) {
   res.render('chain_reaction.html', { });
 });
 
+app.get('/fact', function(req, res) {
+  res.render('fact.html', {
+    fact: "'A man a plan a canal panama' is a palindrome."
+   });
+});
+
                                                         //
 ///////////////////////////////////////////////////////////////////////////////
 //default route
