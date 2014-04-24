@@ -49,8 +49,9 @@ app.get('/chain_reaction', function(req, res) {
 });
 
 app.get('/fact', function(req, res) {
+  var facts = ['Santa Claus is Real', "'A man a plan a canal panama' is a palindrome.", 'Math is hard', 'Aunt Jemima is the fucking bomb!'];
   res.render('fact.html', {
-    fact: "'A man a plan a canal panama' is a palindrome."
+    fact: facts[Math.floor(Math.random() * 4)]
    });
 });
 
