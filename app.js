@@ -51,7 +51,7 @@ app.get('/chain_reaction', function(req, res) {
 });
 
 //////
-  var facts = ['Santa Claus is Real', "'A man a plan a canal panama' is a palindrome.", 'Math is hard', 'Aunt Jemima is the fucking bomb!'];
+  //var facts = ['Santa Claus is Real', "'A man a plan a canal panama' is a palindrome.", 'Math is hard', 'Aunt Jemima is the fucking bomb!'];
   /////
 
 app.get('/fact', function(req, res) {
@@ -62,8 +62,15 @@ app.get('/fact', function(req, res) {
 });
 
 app.get('/facts', function(req, res) {
-  res.render('facts.html', { 
+  db.all('SELECT * FROM fact_table', function(err, items) {
+ // render page here
+ var facts = [];
+ for(var i = 0; i< items.length; i++){
+    facts.push(items[i].fact_str);
+ }
+   res.render('facts.html', { 
     facts : facts});
+});
 });
 
 app.get('/submit_fact', function(req, res) {
