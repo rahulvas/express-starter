@@ -17,13 +17,13 @@ $(document).ready(function() {
   var levels = [
   {num: 1, minReactions: 1, numBalls: 5},
   {num: 2, minReactions: 2, numBalls: 6},
-  {num: 3, minReactions: 3, numBalls: 11},
-  {num: 4, minReactions: 5, numBalls: 17},
-  {num: 5, minReactions: 8, numBalls: 28},
-  {num: 6, minReactions: 13, numBalls: 45},
-  {num: 7, minReactions: 21, numBalls: 73},
-  {num: 8, minReactions: 34, numBalls: 118},
-  {num: 9, minReactions: 55, numBalls: 191}
+  {num: 3, minReactions: 3, numBalls: 7},
+  {num: 4, minReactions: 5, numBalls: 9},
+  {num: 5, minReactions: 8, numBalls: 12},
+  {num: 6, minReactions: 13, numBalls: 17},
+  {num: 7, minReactions: 21, numBalls: 25},
+  {num: 8, minReactions: 34, numBalls: 38},
+  {num: 9, minReactions: 55, numBalls: 100}
   ];
 
   var curLevel = 0;
@@ -73,7 +73,7 @@ $(document).ready(function() {
     if (gameState === 'menu'){
         context.fillStyle = 'black';
         context.font = '20px Arial';
-        context.fillText(menuText, canvas.width/3, canvas.height/2.5);
+        context.fillText(menuText, 330, 300);
     }
     //
 

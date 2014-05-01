@@ -1,6 +1,8 @@
 var express = require("express");
 var ejs = require("ejs");
 var app = express();
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('facts.db');
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,9 +55,10 @@ app.get('/chain_reaction', function(req, res) {
   /////
 
 app.get('/fact', function(req, res) {
-  res.render('fact.html', {
-    fact: facts[Math.floor(Math.random() * facts.length)]
-   });
+  db.get('SELECT * FROM fact_table ORDER BY RANDOM()', function(err, item) {
+ // render page here
+   res.render('fact.html', {fact: item.fact_str});
+});
 });
 
 app.get('/facts', function(req, res) {
